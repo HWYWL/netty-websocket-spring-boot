@@ -13,9 +13,9 @@ import java.io.IOException;
  * @author YI
  * @date 2018-10-7 21:48:39
  */
-@ServerEndpoint(prefix = "netty.websocket")
+@ServerEndpoint(prefix = "netty.websocket.one.service")
 @Component
-public class WebSocketService {
+public class WebSocketOneService {
     /**
      * 当有新的WebSocket连接进入时，对该方法进行回调 注入参数的类型:Session、HttpHeaders
      * @param session
@@ -24,7 +24,7 @@ public class WebSocketService {
      */
     @OnOpen
     public void onOpen(Session session, HttpHeaders headers) throws IOException {
-        System.out.println("new connection");
+        System.out.println("新的WebSocket连接进入一号");
     }
 
     /**
@@ -34,7 +34,7 @@ public class WebSocketService {
      */
     @OnClose
     public void onClose(Session session) throws IOException {
-        System.out.println("one connection closed");
+        System.out.println("一号WebSocket连接关闭");
     }
 
     /**
@@ -55,7 +55,7 @@ public class WebSocketService {
     @OnMessage
     public void OnMessage(Session session, String message) {
         System.out.println(message);
-        session.sendText("Hello Netty!");
+        session.sendText("Hello Netty! ---> " + message);
     }
 
     /**
@@ -82,13 +82,13 @@ public class WebSocketService {
             IdleStateEvent idleStateEvent = (IdleStateEvent) evt;
             switch (idleStateEvent.state()) {
                 case READER_IDLE:
-                    System.out.println("read idle");
+                    System.out.println("一号读操作空闲");
                     break;
                 case WRITER_IDLE:
-                    System.out.println("write idle");
+                    System.out.println("一号写操作空闲");
                     break;
                 case ALL_IDLE:
-                    System.out.println("all idle");
+                    System.out.println("一号所有操作空闲");
                     break;
                 default:
                     break;
