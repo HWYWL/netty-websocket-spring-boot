@@ -14,7 +14,7 @@ netty-websocket之路
 	<dependency>
 		<groupId>org.yeauty</groupId>
 		<artifactId>netty-websocket-spring-boot-starter</artifactId>
-		<version>0.6.3</version>
+		<version>0.7.2</version>
 	</dependency>
 ```
 
